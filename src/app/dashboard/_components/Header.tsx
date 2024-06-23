@@ -8,12 +8,13 @@ import React, { useEffect } from "react";
 function Header() {
   const path = usePathname();
   useEffect(() => {
-    console.log(path);
+    //console.log(path);
   }, []);
 
   return (
     <div className="flex p-4 items-center justify-between bg-secondary shadow-md">
-      <Image src={"./logo.svg"} width={60} height={70} alt="logo" />
+      {/* <Image src={"./logo.svg"} width={60} height={70} alt="logo" /> */}
+      <h1 className="italic text-3xl font-bold text-blue-500">Personal Prep</h1>
       <ul className="hidden sm:flex gap-6">
         <li
           className={`hover:text-primary hover:font-bold transition-all cursor-pointer ${

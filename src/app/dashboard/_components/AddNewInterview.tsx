@@ -19,6 +19,7 @@ import { MockInterview } from "@/utils/schema";
 import { v4 as uuidv4 } from "uuid";
 import { useUser } from "@clerk/nextjs";
 import moment from "moment";
+import { useRouter } from "next/navigation";
 
 function AddNewInterview() {
   const [openDialog, setOpenDialog] = useState(false);
@@ -29,6 +30,7 @@ function AddNewInterview() {
   const [jsonResp, setJsonResp] = useState("");
 
   const { user } = useUser();
+  const router = useRouter();
 
   const submitHandler = async (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -67,7 +69,10 @@ function AddNewInterview() {
         .returning({ mockId: MockInterview.mockId });
 
       console.log("Inserted ID : ", resp);
-      if (resp) setOpenDialog(false);
+      if (resp) {
+        setOpenDialog(false);
+        router.push("/dashboard/interview/" + resp[0]?.mockId);
+      }
     } else {
       console.log("Error while inserting data into the database");
     }
