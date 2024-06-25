@@ -24,10 +24,10 @@ function QuestionsSection({
       <div className="p-5 border rounded-lg my-10">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           {mockInterviewQuestion &&
-            mockInterviewQuestion.map((index: number) => (
+            mockInterviewQuestion.map((question: any, index: number) => (
               <h2
                 className={`p-2 bg-secondary rounded-full text-xs md:text-sm text-center cursor-pointer
-            ${activeQuestionIndex == index && "bg-primary text-white"}
+            ${activeQuestionIndex == index && "bg-black text-white"}
             `}
               >
                 Question {index + 1}
@@ -35,13 +35,13 @@ function QuestionsSection({
             ))}
         </div>
         <h2 className="my-5 text-md md:text-lg">
-          {mockInterviewQuestion[activeQuestionIndex]?.Question}
+          {mockInterviewQuestion[activeQuestionIndex]?.question}
         </h2>
 
         <Volume2
           className="cursor-pointer"
           onClick={() =>
-            textToSpeach(mockInterviewQuestion[activeQuestionIndex]?.Question)
+            textToSpeach(mockInterviewQuestion[activeQuestionIndex]?.question)
           }
         />
 
